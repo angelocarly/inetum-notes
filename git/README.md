@@ -44,6 +44,7 @@
 `git checkout <branch-name>` - Go to new branch  
 `git checkout -b <branch-name>`- Create and checkout new branch  
 `git merge <branch>` - Merge a branch into HEAD  
+`git merge --abort`
 `git push <remote> <branch-name>`  
 `git checkout <remote> <branch>` -   
 `git checkout -b branchname remote/branchname` - Create remote tracking branch  
@@ -53,8 +54,12 @@
 ### Rebasing
 Combining two branches that doesn't create a merge commit  
 Replays the commits from a feature branch on top of the target branch  
-`git rebase master`  
 never rebase public branches onto feature  
+`git rebase master`  
+`git rebase --continue` - Continue fixing rebase conflicts  
+
+Interactive rebase: fix specific commits
+`git rebase -i <commit>` - edit commit  
 
 ## Forking
 1. `git remote add upstream git@github.com:test/test.git`  
@@ -70,12 +75,37 @@ Merging several commits together
 4. `git commit -v`  
 Be careful about squashing commits once you have pushed  
 
-
 ## Merge requests
 `git push origin modify-readme` 
 
 ## Stash and pop
 Stash changes to work on them later
 `git stash` stash latest changes
-`git stash pop` put stached changes back
+`git stash` - Stash unstaged changes  
+`git stash save "title"` - Stash with description  
+`git stash pop` - Pop stash  
+`git stash --keep-index` - Also stash index  
+`git stash -k`  
+`git stash --include-untracked` - Stash untracked changes  
+`git stash -u`  
+`git stash save -k -u` - stash and keep both index and untracked files  
+`git stash list` - List all staches  
+`git stash apply 1` - Apply stash with index 1  
+
+## Branches under the hood
+`git branch` - list branches  
+`git branch --no-merge` - List all unmerged branches  
+`git branch --merge` - List all branches  
+`get reset --hard <commit>`  
+
+## Fast-forward and 3-way merge
+- **Fast-forward merge** - Simply moves the branch to the same commit
+- **3-way merge** - Merge different commits with a new commit (recursive)
+
+## Diff
+`git diff HEAD~1 HEAD` - View diff from previous commit  
+`git diff <from-branch> <to-branch>` - Compare diffs  
+`git config --global merge.conflictstyle diff3` - enable diff3 style  
+`git diff --staged` - also show staged changes in diff  
+`git diff HEAD~1 HEAD file` - Show diff for one file  
 
