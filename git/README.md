@@ -43,6 +43,7 @@
 `git branch <branch-name>` - Create new branch on current commit  
 `git checkout <branch-name>` - Go to new branch  
 `git checkout -b <branch-name>`- Create and checkout new branch  
+`git checkout 'master@{2 months ago}'`
 `git merge <branch>` - Merge a branch into HEAD  
 `git merge --abort`
 `git push <remote> <branch-name>`  
@@ -109,3 +110,15 @@ Stash changes to work on them later
 `git diff --staged` - also show staged changes in diff  
 `git diff HEAD~1 HEAD file` - Show diff for one file  
 
+## Hooks
+Execute scripts when something happens in the git repo  
+Located in .git/hooks/  
+
+## Bisect
+`git bisect start` - Mark commit as start    
+`git bisect bad` - Mark commit as bad  
+`git bisect good` - Mark commit as good  
+`git checkout 'master@{2 months ago}'`  
+`git bisect log > file` - Generate output to continue doing the bisect  
+`git bisect replay` - Reload bisect state  
+`git bisect reset`  
